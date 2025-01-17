@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kale SDK Local Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .demo-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        #status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+<script defer src="sdk.min.js"></script></head>
+<body>
+    <div class="demo-container">
+        <h1>Kale SwerDK </h1>
+        <div id="status"></div>
+    </div>
+
+    <script src="./src/sdk.min.js"></script>
+    <!-- <script src="https://app-dev.kalehq.com/staging/sdk.min.js"></script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                const req = {
+                    companyId: "66d70c91efded3a6285cdf9e",
+                    userEmail: "kishore@kalehq.com",
+                    logoUrl: "https://media.licdn.com/dms/image/v2/D560BAQHVJyUkurivKw/company-logo_200_200/company-logo_200_200/0/1730372674373/kale_hq_logo?e=2147483647&v=beta&t=h8L1zmFisyqQtvS_dMJG60Kwj6HJa3_-sPLeDyqDNfc",
+                };
+
+                kale.sdk.init(req);
+                console.log(kale.sdk)
+                document.getElementById('status').className = 'success';
+                document.getElementById('status').textContent = 'SDK initialized successfully!';
+            } catch (error) {
+                document.getElementById('status').className = 'error';
+                document.getElementById('status').textContent = 'Error initializing SDK: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
